@@ -18,4 +18,5 @@ Route::get('/admin/categories/create', [CategoryController::class, 'create'])->n
 Route::post('/admin/categories/store', [CategoryController::class, 'store'])->name('categories.store');
 Route::get('/admin/categories/{category}/show', [CategoryController::class, 'show'])->name('categories.show');
 Route::get('/admin/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+Route::put('/admin/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/admin/categories/{category}/destroy', [CategoryController::class, 'destroy'])->name('categories.destroy');

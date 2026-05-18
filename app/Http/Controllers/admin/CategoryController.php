@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
@@ -72,7 +73,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $category->load('parent', 'children');
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -81,6 +83,8 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
 
+        $categories = Category::with('parent')->get();
+        return view('admin.categories.edit', compact('categories' , 'category'));
     }
 
     /**
@@ -88,7 +92,23 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $validated = $request->validate([
+            'parent_id' => 'nullable|exists:categories,id',
+            'title' => 'required|string|max:255',
+            'keywords' => 'nullable|string|max:255',
+            'description' => 'nullable|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'status' => 'required|boolean',
+        ]);
+
+        if($request->hasFile('image')) {
+            if($category->image && Storage::disk('public')->exists($category->image)){
+                Storage::disk('public')->delete($category->image);
+            }
+            $validated['image'] = $request->file('image')->store('categories', 'public');
+        }
+        $category->update($validated);
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
     }
 
     /**
