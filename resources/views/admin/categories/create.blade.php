@@ -28,10 +28,10 @@
             <!--begin::Container-->
             <div class="container-fluid">
                 <!--begin::Quick Example-->
-                <div class="card card-primary card-outline mb-4">
+                <div class="card card-primary card-outline mb-2">
                     <!--begin::Header-->
-                    <div class="card-header">
-                        <div class="card-title">Quick Example</div>
+                    <div class="card-header mt-4">
+                        <div class="card-title">Create Category</div>
                     </div>
                     <!--end::Header-->
                     <!--begin::Form-->

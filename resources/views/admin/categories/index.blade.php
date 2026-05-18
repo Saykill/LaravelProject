@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+
 @section('content')
     <!--begin::App Main-->
     @extends('layouts.admin')
@@ -9,8 +9,8 @@
             <div class="container-fluid">
                 <!--begin::Row-->
                 <div class="row">
-                    <div class="col-sm-2">
-                        <a href="/admin/categories/create" type="button" class="btn btn-info mb-2">Add Category</a>
+                    <div class="col-sm-2 mt-5">
+                        <a href="/admin/categories/create" type="button" class="btn btn-info mt-5">Add Category</a>
                     </div>
                     <div class="col-sm-2">
                         <h3 class="mb-0">Title</h3>
@@ -33,7 +33,7 @@
             <div class="container-fluid">
                 <div class="app-content">
                     <!--begin::Container-->
-                    <table class="table table-bordered">
+                    <table class="table table-bordered mt-5">
                         <thead>
                         <tr>
                             <th>ID</th>
