@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class AdminProductController extends Controller
@@ -12,7 +14,8 @@ class AdminProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -20,7 +23,9 @@ class AdminProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::with('parent')->get();
+        $product = new Product();
+        return view('admin.products.create', compact('categories', 'product'));
     }
 
     /**
@@ -28,7 +33,28 @@ class AdminProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $imagePath = null;
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('products', 'public');
+        }
+
+            $product = new Product();
+            $product->category_id = $request->category_id;
+            $product->user_id = 1;
+            $product->title = $request->title;
+            $product->keywords = $request->keywords;
+            $product->description = $request->description;
+            $product->detail = $request->detail;
+            $product->image = $imagePath;
+            $product->stock = $request->stock;
+            $product->price = $request->price;
+            $product->minstock = $request->minstock ?? 0;
+            $product->discount = $request->discount ?? 0;
+            $product->status = $request->status ?? 0;
+            $product->save();
+
+        return redirect()->route('admin.product.index')->with('success', 'Product created successfully.');
     }
 
     /**
@@ -36,7 +62,8 @@ class AdminProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product->load('parent', 'children');
+        return view('admin.products.show', compact('product'));
     }
 
     /**

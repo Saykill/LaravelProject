@@ -5,6 +5,7 @@
         @foreach($categories as $item)
             <option value="{{$item->id}}"
             {{old('parent_id', $category->parent_id ?? 0)== $item->id ? 'selected' : '' }}>
+                {{$item->full_path}}
             </option>
         @endforeach
     </select>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminProductController;
 use App\Http\Controllers\admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -20,3 +21,18 @@ Route::get('/admin/categories/{category}/show', [CategoryController::class, 'sho
 Route::get('/admin/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 Route::put('/admin/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/admin/categories/{category}/destroy', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', function () {return view('admin.index');});
+
+Route::prefix('product')->name('product.')->controller(adminproductcontroller::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/{product}/edit', 'edit')->name('edit');
+    Route::put('/{product}', 'update')->name('update');
+    Route::delete('/{product}', 'destroy')->name('destroy');
+
+});
+
+});

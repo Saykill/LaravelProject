@@ -1,4 +1,4 @@
-
+@section('title') Products List @endsection
 @section('content')
     <!--begin::App Main-->
     @extends('layouts.admin')
@@ -10,10 +10,10 @@
                 <!--begin::Row-->
                 <div class="row">
                     <div class="col-sm-2 mt-5">
-                        <a href="/admin/categories/create" type="button" class="btn btn-info mt-5">Add Category</a>
+                        <a href="/admin/product/create" type="button" class="btn btn-info mt-5">Add Product</a>
                     </div>
-                    <div class="col-sm-2 mt-5">
-                        <h3 class="mt-5">Category List</h3>
+                    <div class="col-sm-2  mt-5">
+                        <h3 class="mt-5">Products List</h3>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-end">
@@ -37,56 +37,59 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Parent</th>
+                            <th>Category</th>
                             <th>Title</th>
-                            <th>Keywords</th>
-                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Discount</th>
                             <th>Image</th>
                             <th>Status</th>
                             <th width="100">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @forelse($categories as $category)
+                        @forelse($products as $product)
                             <tr>
-                                <td>{{$category->id}}</td>
+                                <td>{{$product->id}}</td>
                                 <td>
-                                    @if($category->parent_id && $category->parent_id !=0)
-                                        {{$category->full_path}}
+                                    @if($product->category)
+                                        {{$product->category->full_path}}
                                     @else
-                                        main category
+                                        no category
                                     @endif
                                 </td>
-                                <td>{{$category->title}}</td>
-                                <td>{{$category->keywords}}</td>
-                                <td>{{$category->description}}</td>
+                                <td>{{$product->title}}</td>
+                                <td>{{$product->price}}</td>
+                                <td>{{$product->stock}}</td>
+                                <td>{{$product->discount}}</td>
                                 <td>
-                                    @if($category->image)
-                                        <img src="{{asset('storage/' . $category->image)}}" width="60">
+                                    @if($product->image)
+                                        <img src="{{asset('storage/' . $product->image)}}" width="60">
                                     @endif
                                 </td>
                                 <td>
-                                    @if($category->status)
+                                    @if($product->status)
                                         <span class="badge bg-success">True</span>
                                     @else
                                         <span class="badge bg-danger">False</span>
                                     @endif
                                 </td>
-                                <td>
-                                    <a href="{{route('categories.show', $category->id)}}" class="btn btn-info btn-sm">Show</a>
-                                    <a href="{{route('categories.edit', $category->id)}}" class="btn btn-warning btn-sm">Edit</a>
 
-                                    <form action="{{route('categories.destroy' , $category->id)}}" method="POST" class="d-inline">
+                                <td>
+                                    <a href="" class="btn btn-info btn-sm">Show</a>
+                                    <a href="" class="btn btn-warning btn-sm">Edit</a>
+
+                                    <form action="" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Delete this category?')">Delete</button>
+                                                onclick="return confirm('Delete this product?')">Delete</button>
                                     </form>
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="8" class="text-center">No categories found.</td>
+                                <td colspan="8" class="text-center">No product found.</td>
                             </tr>
                         @endforelse
                         </tbody>
