@@ -29,7 +29,7 @@ Route::prefix('product')->name('product.')->controller(adminproductcontroller::c
     Route::get('/', 'index')->name('index');
     Route::get('/create', 'create')->name('create');
     Route::post('/store', 'store')->name('store');
-    Route::get('/{product}/edit', 'edit')->name('edit');
+    Route::get('/edit/{product}', 'edit')->name('edit');
     Route::put('/{product}', 'update')->name('update');
     Route::delete('/{product}', 'destroy')->name('destroy');
 

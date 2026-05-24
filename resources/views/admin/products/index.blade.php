@@ -77,9 +77,9 @@
 
                                 <td>
                                     <a href="" class="btn btn-info btn-sm">Show</a>
-                                    <a href="" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="{{route('admin.product.edit' , $product->id )}}" class="btn btn-warning btn-sm">Edit</a>
 
-                                    <form action="" method="POST" class="d-inline">
+                                    <form action="{{route('admin.product.destroy' , $product->id)}}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm"

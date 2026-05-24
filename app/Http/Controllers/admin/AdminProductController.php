@@ -62,6 +62,7 @@ class AdminProductController extends Controller
      */
     public function show(string $id)
     {
+        $product = new Product();
         $product->load('parent', 'children');
         return view('admin.products.show', compact('product'));
     }
@@ -69,24 +70,47 @@ class AdminProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Product $product)
     {
-        //
+        $categories = Category::with('parent')->get();
+
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request , Product $product)
     {
-        //
+        $imagePath = null;
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('products', 'public');
+        }
+
+        $product->category_id = $request->category_id;
+        $product->user_id = 1;
+        $product->title = $request->title;
+        $product->keywords = $request->keywords;
+        $product->description = $request->description;
+        $product->detail = $request->detail;
+        $product->image = $imagePath;
+        $product->stock = $request->stock;
+        $product->price = $request->price;
+        $product->minstock = $request->minstock ?? 0;
+        $product->discount = $request->discount ?? 0;
+        $product->status = $request->status ?? 0;
+        $product->save();
+
+        return redirect()->route('admin.product.index')->with('success', 'Product Update successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('admin.product.index')->with('success', 'Product deleted successfully.');
     }
 }
