@@ -47,4 +47,68 @@
         <!--end::App Content-->
     </main>
     <!--end::App Main-->
+    @section('footer')
+        <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+        <style>
+            .ck-editor__editable {
+                min-height: 300px;
+            }
+
+
+            :root {
+
+                --ck-color-base-background: #222736;
+                --ck-color-base-border: #2a3042;
+                --ck-color-base-text: #ced4da;
+
+
+                --ck-color-toolbar-background: #2a3042;
+                --ck-color-toolbar-border: #32394e;
+
+
+                --ck-color-button-default-background: transparent;
+                --ck-color-button-default-hover-background: #32394e;
+                --ck-color-button-default-active-background: #3b435c;
+                --ck-color-button-on-background: #3b435c;
+                --ck-color-button-on-color: #ffffff;
+
+
+                --ck-color-text: #ced4da;
+
+
+                --ck-color-dropdown-panel-background: #2a3042;
+                --ck-color-dropdown-panel-border: #32394e;
+
+
+                --ck-color-list-background: #2a3042;
+                --ck-color-list-button-hover-background: #32394e;
+
+
+                --ck-color-panel-background: #2a3042;
+                --ck-color-panel-border: #32394e;
+
+
+                --ck-color-input-background: #222736;
+                --ck-color-input-border: #32394e;
+                --ck-color-input-text: #ced4da;
+            }
+
+            .ck-focused {
+                border-color: #4b546b !important;
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded' , function (){
+                const detailElement = document.querySelector('#detail');
+
+                if(detailElement){
+                    ClassicEditor
+                        .create(detailElement)
+                        .catch(error=>{
+                            console.error(error);
+                        });
+                }
+            });
+        </script>
+    @endsection
 @endsection

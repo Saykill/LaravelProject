@@ -1,15 +1,18 @@
-
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-        <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/admin/images/logo.svg" alt="logo" /></a>
-        <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/admin/images/logo-mini.svg" alt="logo" /></a>
+        <a class="sidebar-brand brand-logo" href="{{ url('/admin') }}">
+            <img src="{{ asset('assets/admin/images/logo.svg') }}" alt="logo" />
+        </a>
+        <a class="sidebar-brand brand-logo-mini" href="{{ url('/admin') }}">
+            <img src="{{ asset('assets/admin/images/logo-mini.svg') }}" alt="logo" />
+        </a>
     </div>
     <ul class="nav">
         <li class="nav-item profile">
             <div class="profile-desc">
                 <div class="profile-pic">
                     <div class="count-indicator">
-                        <img class="img-xs rounded-circle " src="assets/admin/images/faces/face15.jpg" alt="">
+                        <img class="img-xs rounded-circle " src="{{ asset('assets/admin/images/faces/face15.jpg') }}" alt="">
                         <span class="count bg-success"></span>
                     </div>
                     <div class="profile-name">
@@ -57,62 +60,61 @@
 
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="/admin/">
-        <span class="menu-icon">
-          <i class="mdi mdi-home"></i>
-        </span>
+            <a class="nav-link" href="{{ url('/admin') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-home"></i>
+                </span>
                 <span class="menu-title">Homepage</span>
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link"  href="/admin/categories/" >
-        <span class="menu-icon">
-          <i class="mdi mdi-ticket"></i>
-        </span>
+            <a class="nav-link" href="{{ url('/admin/categories') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-ticket"></i>
+                </span>
                 <span class="menu-title">Categories</span>
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="/admin/product/">
-        <span class="menu-icon">
-              <i class="mdi mdi-package"></i>
-        </span>
+            <a class="nav-link" href="{{ url('/admin/product') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-package"></i>
+                </span>
                 <span class="menu-title">Products</span>
             </a>
         </li>
         <li class="nav-item menu-items">
             <a class="nav-link" href="#">
-        <span class="menu-icon">
-          <i class="mdi mdi-message"></i>
-        </span>
+                <span class="menu-icon">
+                    <i class="mdi mdi-message"></i>
+                </span>
                 <span class="menu-title">Reviews</span>
             </a>
         </li>
         <li class="nav-item menu-items">
             <a class="nav-link" href="#">
-        <span class="menu-icon">
-          <i class="mdi mdi-border-all"></i>
-        </span>
+                <span class="menu-icon">
+                    <i class="mdi mdi-border-all"></i>
+                </span>
                 <span class="menu-title">Orders</span>
                 <i class="menu-arrow"></i>
             </a>
         </li>
         <li class="nav-item menu-items">
             <a class="nav-link" href="#">
-        <span class="menu-icon">
-          <i class="mdi mdi-cellphone "></i>
-        </span>
+                <span class="menu-icon">
+                    <i class="mdi mdi-cellphone "></i>
+                </span>
                 <span class="menu-title">Contact Messages</span>
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="documentation">
-        <span class="menu-icon">
-          <i class="mdi mdi-file-document-box"></i>
-        </span>
+            <a class="nav-link" href="{{ url('documentation') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-file-document-box"></i>
+                </span>
                 <span class="menu-title">Documentation</span>
             </a>
         </li>
     </ul>
 </nav>
-

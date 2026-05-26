@@ -40,7 +40,7 @@
 
 <div class="mb-3">
     <label class="form-label">Detail</label>
-    <textarea name="detail" rows="5" class="form-control"> {{old('detail' , $product -> detail ?? '')}}</textarea>
+    <textarea name="detail" id="detail" rows="5" class="form-control"> {{old('detail' , $product -> detail ?? '')}}</textarea>
 </div>
 
 <div class="mb-3">

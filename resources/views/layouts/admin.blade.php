@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/vendors/owl-carousel-2/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}">
     <link rel="shortcut icon" href="{{ asset('assets/admin/images/favicon.png') }}">
-</head>
+
 <body>
 <div class="container-scroller">
     {{-- 1. Sidebar en dıştaki scroller içinde olmalı --}}
@@ -24,7 +24,7 @@
 
         {{-- 3. İçerik alanı (main-panel index.blade.php içinde olduğu için burada yield yeterli) --}}
         @yield('content')
-
+@yield('footer')
     </div> {{-- .page-body-wrapper sonu --}}
 </div> {{-- .container-scroller sonu --}}
 

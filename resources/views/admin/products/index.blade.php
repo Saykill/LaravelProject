@@ -76,7 +76,7 @@
                                 </td>
 
                                 <td>
-                                    <a href="" class="btn btn-info btn-sm">Show</a>
+                                    <a href="{{route('admin.product.show', $product->id)}}" class="btn btn-info btn-sm">Show</a>
                                     <a href="{{route('admin.product.edit' , $product->id )}}" class="btn btn-warning btn-sm">Edit</a>
 
                                     <form action="{{route('admin.product.destroy' , $product->id)}}" method="POST" class="d-inline">

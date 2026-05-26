@@ -60,10 +60,9 @@ class AdminProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Product $product)
     {
-        $product = new Product();
-        $product->load('parent', 'children');
+        $product->load('category.parent.parent.parent');
         return view('admin.products.show', compact('product'));
     }
 

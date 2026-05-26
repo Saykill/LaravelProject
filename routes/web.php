@@ -32,7 +32,7 @@ Route::prefix('product')->name('product.')->controller(adminproductcontroller::c
     Route::get('/edit/{product}', 'edit')->name('edit');
     Route::put('/{product}', 'update')->name('update');
     Route::delete('/{product}', 'destroy')->name('destroy');
-
+    Route::get('/{product}/show', 'show')->name('show');
 });
 
 });
